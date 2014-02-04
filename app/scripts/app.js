@@ -2,7 +2,7 @@
 
 angular.module('attributionDashboardApp', [
     'ngRoute',
-    'ui.select2'
+    'localytics.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider
