@@ -24,4 +24,13 @@ angular.module('attributionDashboardApp')
         // called asynchronously if an error occurs
         // or server returns response with an error status.
       });
+
+    $scope.colors = [
+      {name:'black', shade:'dark'},
+      {name:'white', shade:'light'},
+      {name:'red', shade:'dark'},
+      {name:'blue', shade:'dark'},
+      {name:'yellow', shade:'light'}
+    ];
+    $scope.color = $scope.colors[2]; // red
   });
