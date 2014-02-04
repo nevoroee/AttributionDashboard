@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('attributionDashboardApp', [
-  'ngRoute'
-])
+    'ngRoute',
+    'ui.select2'
+  ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
