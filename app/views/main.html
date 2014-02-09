@@ -10,9 +10,10 @@
 
 <div class="top-bar">
 
-  Color grouped by shade:
-  <select chosen multiple id="states" ng-model="color" ng-options="c.name group by c.shade for c in colors" style="width:200px;">
+  <select chosen multiple id="states" ng-model="selection" ng-options="c.item group by c.group for c in selectionGroups" style="width:600px;">
   </select><br/>
+
+
   <!--
   <input type="text" style="width:300px" ui-select2="arrayAsync" ng-model="arrayAsyncValue"/>
   -->
@@ -44,7 +45,6 @@
   <div class="col-md-12">Summary
     <div class="row">
       <div class="summary-row col-md-2">Served Impressions:</div>
-      <beutyTab></beutyTab>
       <div class="summary-row col-md-2">Total Clicks (Rate):</div>
       <div class="summary-row col-md-2">Total Conversions (Rate):</div>
       <div class="summary-row col-md-2">Post Impression Conversions:</div>
