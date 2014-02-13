@@ -25,16 +25,7 @@ angular.module('attributionDashboardApp')
       .success(function(data, status, headers, config) {
         // this callback will be called asynchronously
         // when the response is available
-        //console.log(data);
-        $scope.advertisers = data;
-        for(var i = 0 ; i < $scope.advertisers.length ; i++ )
-        {
-          $scope.selectionGroups.push({
-              item:$scope.advertisers[i].Name,
-              group:"Advertsiers"}
-          )
-
-        }
+        $scope.UpdateAdvers(data);
       }).
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
@@ -44,17 +35,39 @@ angular.module('attributionDashboardApp')
       .success(function(data, status, headers, config) {
         // this callback will be called asynchronously
         // when the response is available
-        $scope.campaigns = data;
-        for(var i = 0 ; i < $scope.campaigns.length ; i++ )
-        {
-          $scope.selectionGroups.push({
-              item:$scope.campaigns[i].Name,
-              group:"Campaigns"}
-          )
-        }
+        $scope.UpdateCamps(data);
       }).
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
       });
+
+
+    $scope.UpdateAdvers = function (data)
+    {
+      $scope.advertisers = data;
+      for (var i = 0 ; i < $scope.advertisers.length ; i++)
+      {
+        $scope.selectionGroups.push({
+            item: $scope.advertisers[i].Name,
+            group: "Advertsiers"
+          }
+        );
+      }
+      $scope.$apply(function () {});
+    };
+
+    $scope.UpdateCamps = function (data)
+    {
+      $scope.campaigns = data;
+      for (var i = 0 ; i < $scope.campaigns.length ; i++)
+      {
+        $scope.selectionGroups.push({
+            item: $scope.campaigns[i].Name,
+            group: "Campaigns"
+          }
+        );
+      }
+      $scope.$apply(function () { });
+    };
   });
