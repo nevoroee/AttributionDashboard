@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="scripts/lib/chosen/chosen.css">
 <script src="scripts/lib/chosen/chosen.jquery.js"></script>
 
+
+
+
 <div class="header">
   <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
@@ -13,10 +16,10 @@
 
 <div class="top-bar">
 
-  <select chosen multiple ng-model="selection" ng-options="c.item group by c.group for c in selectionGroups" style="width:600px;">
+  <select chosen multiple ng-model="selection" ng-change="selectChanged()" ng-options="c.item.Name group by c.group for c in selectionGroups" style="width:600px;">
   </select><br/>
 
-
+  <div highcharts="chartOptions" style="width: 800px; height: 400px"  />
 
   <!--
   <input type="text" style="width:300px" ui-select2="arrayAsync" ng-model="arrayAsyncValue"/>

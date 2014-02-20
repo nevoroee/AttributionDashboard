@@ -1,5 +1,5 @@
 'use strict';
-angular.module('attributionDashboardApp')
+var app = angular.module('attributionDashboardApp')
   .controller('MainCtrl', function ($scope, $http, $q ,$filter) {
     $scope.campaigns = [];
     $scope.advertisers = [];
@@ -49,7 +49,7 @@ angular.module('attributionDashboardApp')
       for (var i = 0 ; i < $scope.advertisers.length ; i++)
       {
         $scope.selectionGroups.push({
-            item: $scope.advertisers[i].Name,
+            item: $scope.advertisers[i],
             group: "Advertsiers"
           }
         );
@@ -63,11 +63,67 @@ angular.module('attributionDashboardApp')
       for (var i = 0 ; i < $scope.campaigns.length ; i++)
       {
         $scope.selectionGroups.push({
-            item: $scope.campaigns[i].Name,
+            item: $scope.campaigns[i],
             group: "Campaigns"
           }
         );
       }
       $scope.$apply(function () { });
     };
-  });
+
+
+
+    $scope.chartOptions =  {
+      chart: { type: 'line' },
+      title: { text: 'Fruit Consumption' },
+      xAxis: { categories: ['Apples', 'Bananas', 'Oranges'] },
+      yAxis: { title: { text: 'Fruit eaten' } },
+      series: [
+        { name: 'Jane', data: [1, 0, 4] },
+        { name: 'John', data: [5, 7, 3] }
+      ]
+    };
+
+    $scope.chartOptions.series = [
+      { name: 'Mark', data: [1, 0.5, 4] },
+      { name: 'Dave', data: [5, 6, 3] },
+      { name: 'Nick', data: [0, 2, 7] }];
+
+
+    $scope.selectChanged = function()
+    {
+      //TODO: doesn't work on remove
+      //TODO: keep the advertiser selected
+      //TODO: on selecting campain limit the selection to those camapigns
+      if ($scope.selection == [])
+      {
+        $scope.UpdateAdvers($scope.advertisers);
+        $scope.UpdateCamps($scope.campaigns);
+      }
+      if ($scope.selection[0].group == "Advertsiers")
+      {
+        $scope.selectionGroups = [];
+        for (var i = 0 ; i < $scope.campaigns.length ; i++)
+        {
+          if ($scope.campaigns[i].AdvertiserID == $scope.selection[0].item.id)
+          {
+            $scope.selectionGroups.push({
+                item: $scope.campaigns[i],
+                group: "Campaigns"
+              }
+            );
+          }
+        }
+      }
+    }
+});
+
+app.directive("highcharts", function() {
+  return {
+    link: function(scope, el, attrs) {
+      var options = scope.$eval(attrs.highcharts);
+      options.chart.renderTo = el[0];
+      new Highcharts.Chart(options);
+    }
+  };
+});
