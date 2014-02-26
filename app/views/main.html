@@ -19,6 +19,8 @@
   <select chosen multiple ng-model="selection" ng-change="selectChanged()" ng-options="c.item.Name group by c.group for c in selectionGroups" style="width:600px;">
   </select><br/>
 
+  <input type="daterange" ng-model="dates1"> <code>{{dates1|json}}</code>
+
 
   <select class="form-control" ng-model="left" ng-options="opt for opt in options.left" ng-change="leftDropdownChanged()"></select>
   <select class="form-control" ng-model="right" ng-options="opt for opt in options.right" ng-change="rightDropdownChanged()"></select>
