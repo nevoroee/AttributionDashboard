@@ -19,20 +19,11 @@
   <select chosen multiple ng-model="selection" ng-change="selectChanged()" ng-options="c.item.Name group by c.group for c in selectionGroups" style="width:600px;">
   </select><br/>
 
-  <div highcharts="chartOptions" style="width: 800px; height: 400px"  />
 
-  <!--
-  <input type="text" style="width:300px" ui-select2="arrayAsync" ng-model="arrayAsyncValue"/>
-  -->
-  <!--<select ui-select2="placeholders" multiple ng-model="placeholdersMultiValue" class="populate">
-    <option ng-repeat="select in selection" value="{{select.text}}">{{select.text}}</option>
-  </select>-->
-  <!--
-  <select ui-select2 ng-model="select2" data-placeholder="Pick a number">
-    <option value=""></option>
-    <option ng-repeat="camp in campaigns" value="{{camp.Name}}">{{camp.Name}}</option>
-  </select>
--->
+  <select class="form-control" ng-model="left" ng-options="opt for opt in options.left" ng-change="leftDropdownChanged()"></select>
+  <select class="form-control" ng-model="right" ng-options="opt for opt in options.right" ng-change="rightDropdownChanged()"></select>
+  <highchart id="chart1" config="chartConfig" class="span10" ></highchart>
+
   <div>
     <img src="images/u1793.png" alt="DG"><br>
   </div>
@@ -62,34 +53,3 @@
 </div>
 
 
-
-
-<!--
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
-</div>
--->

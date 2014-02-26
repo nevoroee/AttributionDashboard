@@ -2,7 +2,8 @@
 
 angular.module('attributionDashboardApp', [
     'ngRoute',
-    'localytics.directives'
+    'localytics.directives',
+    'highcharts-ng'
   ])
   .config(function ($routeProvider) {
     $routeProvider
